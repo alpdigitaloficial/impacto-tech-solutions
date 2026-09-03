@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 /**
  * Ilustração técnica em SVG: computador central conectado a impressora,
  * roteador/Wi-Fi, SSD, componentes e ferramentas. Linhas finas com
  * pontos percorrendo as conexões.
  */
 export function HeroIllustration({ className = "" }: { className?: string }) {
-  const nodes: { x: number; y: number; label: string; icon: React.ReactNode }[] = [
+  const nodes: { x: number; y: number; label: string; icon: ReactNode }[] = [
     {
       x: 90,
       y: 80,
