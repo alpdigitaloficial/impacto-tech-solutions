@@ -4,7 +4,7 @@
  * pontos percorrendo as conexões.
  */
 export function HeroIllustration({ className = "" }: { className?: string }) {
-  const nodes: { x: number; y: number; label: string; icon: JSX.Element }[] = [
+  const nodes: { x: number; y: number; label: string; icon: React.ReactNode }[] = [
     {
       x: 90,
       y: 80,
