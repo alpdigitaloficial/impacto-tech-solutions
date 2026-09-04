@@ -33,11 +33,12 @@ const QUICK = [
 
 export function Contact() {
   const [form, setForm] = useState({ nome: "", telefone: "", tipo: "", mensagem: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  type Errors = { nome?: string; telefone?: string; tipo?: string; mensagem?: string };
+  const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
 
   function validate() {
-    const e: Record<string, string> = {};
+    const e: Errors = {};
     if (form.nome.trim().length < 2) e.nome = "Informe seu nome.";
     if (form.telefone.replace(/\D/g, "").length < 10) e.telefone = "Informe um telefone válido com DDD.";
     if (!form.tipo) e.tipo = "Selecione o tipo de necessidade.";
