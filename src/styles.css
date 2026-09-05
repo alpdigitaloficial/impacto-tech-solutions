@@ -38,6 +38,8 @@
   --color-graphite: var(--graphite);
   --color-graphite-2: var(--graphite-2);
   --color-glow: var(--glow);
+  --color-section: var(--section);
+  --color-section-alt: var(--section-alt);
   --color-whats: var(--whats);
   --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
@@ -46,14 +48,16 @@
 :root {
   --radius: 0.5rem;
 
-  --ink: oklch(0.16 0.01 250);
-  --graphite: oklch(0.22 0.012 250);
-  --graphite-2: oklch(0.28 0.014 250);
+  --ink: oklch(0.125 0.018 260);
+  --graphite: oklch(0.205 0.027 257);
+  --graphite-2: oklch(0.25 0.035 255);
   --glow: oklch(0.72 0.15 245);
+  --section: oklch(0.18 0.025 257);
+  --section-alt: oklch(0.155 0.02 258);
 
-  --background: oklch(0.145 0.008 250);
+  --background: oklch(0.105 0.015 265);
   --foreground: oklch(0.97 0.004 250);
-  --card: oklch(0.203 0.011 250);
+  --card: oklch(0.225 0.035 257);
   --card-foreground: oklch(0.97 0.004 250);
   --popover: oklch(0.203 0.011 250);
   --popover-foreground: oklch(0.97 0.004 250);
@@ -73,16 +77,74 @@
   --whats: oklch(0.68 0.16 155);
 }
 
-/* Superfícies claras usadas em seções alternadas */
+/* Superfícies em azul-marinho usadas em seções alternadas */
 @utility surface-light {
-  background-color: oklch(0.97 0.003 250);
-  color: oklch(0.18 0.01 250);
-  --foreground: oklch(0.18 0.01 250);
-  --muted-foreground: oklch(0.45 0.01 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 250);
-  --border: oklch(0.2 0.01 250 / 12%);
-  --secondary: oklch(0.94 0.004 250);
+  background-color: var(--section);
+  color: var(--foreground);
+  --foreground: oklch(0.97 0.004 250);
+  --muted-foreground: oklch(0.74 0.018 250);
+  --card: oklch(0.225 0.035 257);
+  --card-foreground: oklch(0.97 0.004 250);
+  --border: oklch(0.7 0.12 248 / 16%);
+  --secondary: oklch(0.26 0.04 255);
+}
+
+@utility tech-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--glow) 16%, transparent);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--glow));
+    transition: width 350ms ease;
+  }
+  &:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in oklab, var(--glow) 52%, transparent);
+    box-shadow: 0 18px 44px -22px color-mix(in oklab, var(--glow) 48%, transparent);
+  }
+  &:hover::before { width: 100%; }
+}
+
+@utility tech-card-icon {
+  transition: transform 300ms ease, filter 300ms ease;
+  .group:hover & {
+    transform: scale(1.1) rotate(4deg);
+    filter: drop-shadow(0 0 8px color-mix(in oklab, var(--glow) 70%, transparent));
+  }
+}
+
+@utility tech-pill {
+  transition: color 250ms ease, background-color 250ms ease, border-color 250ms ease;
+  .group:hover & {
+    color: var(--glow);
+    background-color: color-mix(in oklab, var(--primary) 14%, transparent);
+    border-color: color-mix(in oklab, var(--glow) 32%, transparent);
+  }
+}
+
+@utility text-gradient-blue {
+  color: transparent;
+  background: linear-gradient(100deg, var(--glow), var(--primary), var(--glow));
+  background-size: 220% 100%;
+  background-clip: text;
+  animation: impacto-gradient 8s ease-in-out infinite;
+}
+
+@utility hero-glow {
+  background: radial-gradient(circle, color-mix(in oklab, var(--glow) 25%, transparent), transparent 68%);
+}
+
+@utility glass-button {
+  background-color: color-mix(in oklab, var(--card) 56%, transparent);
+  backdrop-filter: blur(14px);
 }
 
 @utility tech-grid {
@@ -175,6 +237,16 @@
   }
 }
 
+@keyframes impacto-orbit { to { transform: rotate(360deg); } }
+@keyframes impacto-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes impacto-wave-pulse {
+  0%, 100% { opacity: 0.18; transform: scale(0.92); }
+  50% { opacity: 0.9; transform: scale(1.04); }
+}
+
 @utility anim-dash {
   animation: impacto-dash 6s linear infinite;
 }
@@ -186,6 +258,13 @@
 }
 @utility anim-scan {
   animation: impacto-scan 3.6s ease-in-out infinite alternate;
+}
+@utility anim-orbit {
+  animation: impacto-orbit 40s linear infinite;
+  transform-origin: center;
+}
+@utility anim-wave-pulse {
+  animation: impacto-wave-pulse 2.8s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
