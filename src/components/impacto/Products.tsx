@@ -1,7 +1,11 @@
-import { Monitor, Printer, Cpu, Mouse, Router, Cable } from "lucide-react";
+import { Monitor, Printer, Cpu, Mouse, Router, Cable, MessageCircle } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { wa } from "@/lib/impacto";
 import { WaveDivider } from "./WaveDivider";
+import { Button } from "@/components/ui/button";
+import mouseImage from "@/assets/product-mouse.jpg";
+import routerImage from "@/assets/product-router.jpg";
+import cableImage from "@/assets/product-cable.jpg";
 
 const CATEGORIES = [
   { icon: Monitor, title: "Computadores" },
@@ -13,6 +17,27 @@ const CATEGORIES = [
 ];
 
 const BRANDS = ["Intelbras", "Logitech", "Epson", "Entre outras"];
+
+const PRODUCTS = [
+  {
+    name: "Mouse sem fio",
+    category: "Periféricos",
+    image: mouseImage,
+    alt: "Mouse sem fio preto com detalhes em azul",
+  },
+  {
+    name: "Roteador Wi-Fi",
+    category: "Equipamentos de rede",
+    image: routerImage,
+    alt: "Roteador Wi-Fi preto com antenas e indicadores azuis",
+  },
+  {
+    name: "Cabo USB-C reforçado",
+    category: "Acessórios",
+    image: cableImage,
+    alt: "Cabo USB-C trançado preto com detalhes em azul",
+  },
+];
 
 export function Products() {
   return (
@@ -45,6 +70,51 @@ export function Products() {
             </Reveal>
           ))}
         </ul>
+
+        <div className="mt-16">
+          <Reveal>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="eyebrow text-primary">Vitrine</p>
+                <h3 className="mt-3 text-2xl font-bold sm:text-3xl">Produtos em destaque</h3>
+              </div>
+              <p className="max-w-md text-sm text-muted-foreground sm:text-right">
+                Imagens ilustrativas. Consulte modelos e disponibilidade com nossa equipe.
+              </p>
+            </div>
+          </Reveal>
+
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {PRODUCTS.map((product, i) => (
+              <Reveal as="li" key={product.name} delay={i * 0.08} className="tech-card group flex min-h-full flex-col">
+                <div className="aspect-[4/3] overflow-hidden border-b border-border bg-background">
+                  <img
+                    src={product.image}
+                    alt={product.alt}
+                    loading="lazy"
+                    width={1024}
+                    height={768}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="eyebrow text-primary">{product.category}</p>
+                  <h4 className="mt-2 text-xl font-bold">{product.name}</h4>
+                  <Button asChild size="lg" className="mt-6 w-full font-semibold">
+                    <a
+                      href={wa(`Olá, tenho interesse no ${product.name}.`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle aria-hidden />
+                      Comprar pelo WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
 
         <Reveal delay={0.15} className="tech-card group mt-14 p-8 lg:p-10">
           <h3 className="eyebrow text-muted-foreground">Trabalhamos com marcas reconhecidas</h3>
