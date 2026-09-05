@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Reveal, SectionHeading } from "./Reveal";
+import { WaveDivider } from "./WaveDivider";
 
 const STEPS = [
   { num: "01", title: "Você entra em contato", desc: "Conte o que está acontecendo." },
@@ -20,7 +21,8 @@ export function Process() {
   const scaleY = scaleX;
 
   return (
-    <section className="py-20 lg:py-28">
+    <section className="relative bg-section py-20 lg:py-28">
+      <WaveDivider />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow="Processo de atendimento" title="Do problema à solução." />
 

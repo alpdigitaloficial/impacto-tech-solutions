@@ -1,6 +1,7 @@
 import { Monitor, Printer, Cpu, Mouse, Router, Cable } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { wa } from "@/lib/impacto";
+import { WaveDivider } from "./WaveDivider";
 
 const CATEGORIES = [
   { icon: Monitor, title: "Computadores" },
@@ -15,7 +16,8 @@ const BRANDS = ["Intelbras", "Logitech", "Epson", "Entre outras"];
 
 export function Products() {
   return (
-    <section id="produtos" className="py-20 lg:py-28">
+    <section id="produtos" className="relative bg-section-alt py-20 lg:py-28">
+      <WaveDivider className="text-section-alt" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Produtos"
@@ -34,23 +36,23 @@ export function Products() {
               as="li"
               key={c.title}
               delay={i * 0.06}
-              className="flex items-center gap-4 rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/50"
+              className="tech-card group flex items-center gap-4 p-6"
             >
               <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
-                <c.icon className="h-5 w-5" aria-hidden />
+                <c.icon className="tech-card-icon h-5 w-5" aria-hidden />
               </span>
               <h3 className="text-sm font-semibold tracking-[0.08em] uppercase">{c.title}</h3>
             </Reveal>
           ))}
         </ul>
 
-        <Reveal delay={0.15} className="mt-14 rounded-xl border border-border bg-card/50 p-8 lg:p-10">
+        <Reveal delay={0.15} className="tech-card group mt-14 p-8 lg:p-10">
           <h3 className="eyebrow text-muted-foreground">Trabalhamos com marcas reconhecidas</h3>
           <ul className="mt-5 flex flex-wrap gap-3">
             {BRANDS.map((b) => (
               <li
                 key={b}
-                className="rounded-md border border-border px-4 py-2.5 font-display text-sm font-semibold tracking-[0.08em] uppercase"
+                className="tech-pill rounded-md border border-border px-4 py-2.5 font-display text-sm font-semibold tracking-[0.08em] uppercase"
               >
                 {b}
               </li>

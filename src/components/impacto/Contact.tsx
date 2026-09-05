@@ -11,6 +11,7 @@ import {
   WHATSAPP_DISPLAY,
   wa,
 } from "@/lib/impacto";
+import { WaveDivider } from "./WaveDivider";
 
 const NEEDS = [
   "Manutenção de computador",
@@ -60,7 +61,8 @@ export function Contact() {
     "mt-2 w-full rounded-md border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary";
 
   return (
-    <section id="contato" className="py-20 lg:py-28">
+    <section id="contato" className="relative bg-section py-20 lg:py-28">
+      <WaveDivider />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Localização e contato"

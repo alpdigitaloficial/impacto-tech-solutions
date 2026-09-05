@@ -5,13 +5,10 @@ import { wa } from "@/lib/impacto";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24">
+    <section id="inicio" className="relative overflow-hidden bg-background pt-28 pb-20 lg:pt-36 lg:pb-28">
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden />
-      <div
-        className="pointer-events-none absolute -top-40 right-0 h-[520px] w-[520px] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--glow), transparent 65%)", opacity: 0.16 }}
-        aria-hidden
-      />
+      <div className="hero-glow pointer-events-none absolute -top-48 -right-36 h-[620px] w-[620px]" aria-hidden />
+      <div className="hero-glow pointer-events-none absolute -bottom-72 -left-40 h-[620px] w-[620px] opacity-60" aria-hidden />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8">
         <div>
@@ -32,7 +29,7 @@ export function Hero() {
             className="mt-6 text-4xl leading-[1.05] font-extrabold text-balance sm:text-5xl lg:text-6xl"
           >
             Seu equipamento precisa funcionar.
-            <span className="mt-2 block text-primary">A Impacto sabe como fazer isso.</span>
+            <span className="text-gradient-blue mt-2 block">A Impacto sabe como fazer isso.</span>
           </motion.h1>
 
           <motion.p
@@ -55,14 +52,14 @@ export function Hero() {
               href={wa()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-4 text-sm font-semibold tracking-[0.1em] uppercase text-primary-foreground transition-colors hover:bg-primary/90"
+              className="group inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-4 text-sm font-semibold tracking-[0.1em] uppercase text-primary-foreground transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 hover:shadow-[0_14px_34px_-12px_color-mix(in_oklab,var(--glow)_72%,transparent)]"
             >
               Solicitar atendimento
-              <ArrowRight className="h-4 w-4" aria-hidden />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
             </a>
             <a
               href="#servicos"
-              className="inline-flex items-center justify-center rounded-md border border-border px-6 py-4 text-sm font-semibold tracking-[0.1em] uppercase transition-colors hover:bg-secondary"
+              className="glass-button inline-flex items-center justify-center rounded-md border border-border px-6 py-4 text-sm font-semibold tracking-[0.1em] uppercase transition-all hover:-translate-y-1 hover:border-primary/40"
             >
               Conhecer serviços
             </a>

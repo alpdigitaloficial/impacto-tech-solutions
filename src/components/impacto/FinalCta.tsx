@@ -1,10 +1,12 @@
 import { Reveal } from "./Reveal";
 import { PowerMark } from "./Logo";
 import { wa } from "@/lib/impacto";
+import { WaveDivider } from "./WaveDivider";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-ink py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-section-alt py-24 lg:py-32">
+      <WaveDivider className="text-section-alt" />
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden />
       <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
         <Reveal>

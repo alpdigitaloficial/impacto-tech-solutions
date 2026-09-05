@@ -1,6 +1,7 @@
 import { Monitor, Printer, Network, MonitorCog, PackageSearch } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { wa } from "@/lib/impacto";
+import { WaveDivider } from "./WaveDivider";
 
 const CARDS = [
   { icon: Monitor, title: "Computadores", desc: "Manutenção e suporte." },
@@ -18,39 +19,41 @@ function OfficeIllustration() {
       role="img"
       aria-label="Escritório conectado com computadores, impressora, roteador Wi-Fi e rede"
     >
-      <rect x="30" y="200" width="360" height="8" rx="4" fill="currentColor" fillOpacity="0.1" />
-      {[70, 190, 310].map((x, i) => (
-        <g key={x} className="anim-float" style={{ animationDelay: `${i * 0.9}s`, transformOrigin: `${x}px 170px` }}>
-          <rect x={x - 38} y="130" width="76" height="52" rx="5" fill="var(--card)" stroke="currentColor" strokeOpacity="0.2" />
-          <rect x={x - 30} y="138" width="60" height="36" rx="3" fill="var(--ink)" stroke="var(--glow)" strokeOpacity="0.3" />
-          <path d={`M${x - 12} 182h24l5 14h-34z`} fill="var(--card)" stroke="currentColor" strokeOpacity="0.2" />
+      <defs><filter id="office-glow" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="4" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
+      <g stroke="var(--glow)" strokeWidth="1.4" fill="none" opacity="0.32">
+        <path d="M210 82 78 162" /><path d="M210 82 210 162" /><path d="M210 82 342 162" />
+      </g>
+      <g stroke="var(--glow)" strokeWidth="2.4" fill="none" strokeLinecap="round">
+        {["M210 82 78 162", "M210 82 210 162", "M210 82 342 162"].map((d, i) => <path key={d} d={d} strokeDasharray="5 180" className="anim-dash" style={{ animationDelay: `${i * 1.25}s` }} />)}
+      </g>
+      <g className="group cursor-default">
+        <rect x="172" y="62" width="76" height="24" rx="5" fill="var(--card)" stroke="var(--glow)" strokeOpacity="0.45" className="transition-all duration-300 group-hover:[filter:url(#office-glow)]" />
+        <circle cx="187" cy="74" r="2" fill="var(--glow)" /><circle cx="197" cy="74" r="2" fill="var(--glow)" /><path d="M216 74h19" stroke="var(--glow)" strokeOpacity="0.65" />
+        <g stroke="var(--glow)" strokeWidth="2" fill="none" strokeLinecap="round" style={{ transformOrigin: "210px 52px" }}>
+          <path d="M193 53a24 24 0 0 1 34 0" className="anim-wave-pulse" />
+          <path d="M200 43a14 14 0 0 1 20 0" className="anim-wave-pulse" style={{ animationDelay: ".55s" }} />
+        </g>
+      </g>
+      {[
+        { x: 78, type: "monitor" }, { x: 210, type: "printer" }, { x: 342, type: "layers" },
+      ].map((node) => (
+        <g key={node.type} className="group cursor-default">
+          <rect x={node.x - 42} y="155" width="84" height="72" rx="7" fill="var(--card)" stroke="var(--glow)" strokeOpacity="0.28" className="transition-all duration-300 group-hover:stroke-primary group-hover:[filter:url(#office-glow)]" />
+          <g transform={`translate(${node.x} 190)`} fill="none" stroke="var(--glow)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {node.type === "monitor" && <><rect x="-20" y="-17" width="40" height="27" rx="3" /><path d="M-7 18h14M0 10v8" /></>}
+            {node.type === "printer" && <><rect x="-20" y="-9" width="40" height="25" rx="3" /><path d="M-13-18h26v15M-12 8h24v15h-24z" /><circle cx="13" cy="-2" r="1" fill="var(--glow)" /></>}
+            {node.type === "layers" && <><path d="m0-20 22 11L0 2-22-9Z" /><path d="m-22 2 22 11L22 2M-22 13 0 24l22-11" /></>}
+          </g>
         </g>
       ))}
-      <g stroke="var(--glow)" strokeOpacity="0.35" strokeWidth="1" fill="none">
-        <path d="M70 130 210 70M190 130 210 70M310 130 210 70" />
-      </g>
-      <g stroke="var(--glow)" strokeWidth="1.6" fill="none" strokeLinecap="round">
-        <path d="M70 130 210 70" strokeDasharray="4 180" className="anim-dash" />
-        <path d="M310 130 210 70" strokeDasharray="4 180" className="anim-dash" style={{ animationDelay: "2s" }} />
-      </g>
-      <g>
-        <rect x="182" y="60" width="56" height="16" rx="4" fill="var(--card)" stroke="currentColor" strokeOpacity="0.22" />
-        <g stroke="var(--glow)" strokeWidth="2" fill="none" strokeLinecap="round" className="anim-pulse-soft" style={{ transformOrigin: "210px 48px" }}>
-          <path d="M196 50a20 20 0 0 1 28 0" />
-          <path d="M203 40a10 10 0 0 1 14 0" />
-        </g>
-      </g>
-      <g transform="translate(360 150)">
-        <rect x="-24" y="-6" width="48" height="24" rx="3" fill="var(--card)" stroke="currentColor" strokeOpacity="0.2" />
-        <rect x="-15" y="-20" width="30" height="14" rx="2" fill="none" stroke="var(--glow)" strokeOpacity="0.5" />
-      </g>
     </svg>
   );
 }
 
 export function Business() {
   return (
-    <section id="empresas" className="surface-light py-20 lg:py-28">
+    <section id="empresas" className="surface-light relative py-20 lg:py-28">
+      <WaveDivider className="text-section" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-start gap-14 lg:grid-cols-2">
           <div>
@@ -79,9 +82,9 @@ export function Business() {
                   as="li"
                   key={c.title}
                   delay={i * 0.08}
-                  className="rounded-lg border border-border bg-card p-6"
+                  className="tech-card group p-6"
                 >
-                  <c.icon className="h-5 w-5 text-primary" aria-hidden />
+                  <c.icon className="tech-card-icon h-5 w-5 text-primary" aria-hidden />
                   <h3 className="mt-4 text-base font-semibold">{c.title}</h3>
                   <p className="mt-1.5 text-sm text-muted-foreground">{c.desc}</p>
                 </Reveal>

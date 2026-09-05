@@ -1,6 +1,7 @@
 import { Gauge, Printer, Wifi, Cpu } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { wa } from "@/lib/impacto";
+import { WaveDivider } from "./WaveDivider";
 
 const CARDS = [
   {
@@ -27,7 +28,8 @@ const CARDS = [
 
 export function Problems() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="relative bg-section py-20 lg:py-28">
+      <WaveDivider />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Sintomas comuns"
@@ -41,9 +43,9 @@ export function Problems() {
               as="li"
               key={c.title}
               delay={i * 0.08}
-              className="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/50"
+              className="tech-card group p-6"
             >
-              <c.icon className="h-6 w-6 text-primary" aria-hidden />
+              <c.icon className="tech-card-icon h-6 w-6 text-primary" aria-hidden />
               <h3 className="mt-5 text-lg font-semibold">{c.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
             </Reveal>
