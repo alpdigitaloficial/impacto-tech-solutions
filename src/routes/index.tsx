@@ -13,6 +13,7 @@ import { Contact } from "@/components/impacto/Contact";
 import { FinalCta } from "@/components/impacto/FinalCta";
 import { Footer } from "@/components/impacto/Footer";
 import { WhatsAppFloat } from "@/components/impacto/WhatsAppFloat";
+import { Testimonials } from "@/components/impacto/Testimonials";
 
 const TITLE = "Impacto Informática | Manutenção de Computadores em Sidrolândia";
 const DESCRIPTION =
@@ -84,6 +85,7 @@ function Index() {
         <Business />
         <Products />
         <About />
+        <Testimonials />
         <Contact />
         <FinalCta />
       </main>

@@ -1,5 +1,6 @@
 import { HardDrive, MonitorCog, Network, Printer } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
+import { WaveDivider } from "./WaveDivider";
 
 const SERVICES = [
   {
@@ -45,7 +46,8 @@ const SERVICES = [
 
 export function Services() {
   return (
-    <section id="servicos" className="surface-light py-20 lg:py-28">
+    <section id="servicos" className="surface-light relative py-20 lg:py-28">
+      <WaveDivider className="text-section" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Serviços"
@@ -59,7 +61,7 @@ export function Services() {
               as="li"
               key={s.num}
               delay={i * 0.08}
-              className="relative overflow-hidden rounded-xl border border-border bg-card p-7 shadow-[0_1px_2px_rgba(16,24,40,0.06)] transition-shadow hover:shadow-[0_18px_40px_-24px_rgba(16,24,40,0.35)] lg:p-9"
+              className="tech-card group p-7 lg:p-9"
             >
               <span
                 className="pointer-events-none absolute top-5 right-6 font-display text-6xl font-extrabold text-foreground/[0.05]"
@@ -69,7 +71,7 @@ export function Services() {
               </span>
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary">
-                  <s.icon className="h-5 w-5" aria-hidden />
+                  <s.icon className="tech-card-icon h-5 w-5" aria-hidden />
                 </span>
                 <span className="eyebrow text-primary">{s.tag}</span>
               </div>
@@ -79,7 +81,7 @@ export function Services() {
                 {s.items.map((it) => (
                   <li
                     key={it}
-                    className="rounded-md border border-border bg-secondary px-3 py-1.5 text-xs font-medium"
+                    className="tech-pill rounded-md border border-border bg-secondary px-3 py-1.5 text-xs font-medium"
                   >
                     {it}
                   </li>

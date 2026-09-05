@@ -1,5 +1,6 @@
 import { Reveal } from "./Reveal";
 import { PowerMark } from "./Logo";
+import { WaveDivider } from "./WaveDivider";
 
 const TIMELINE = [
   { year: "2000", title: "Início da Impacto", desc: "" },
@@ -17,7 +18,8 @@ const DIFFS = [
 
 export function About() {
   return (
-    <section id="sobre" className="surface-light py-20 lg:py-28">
+    <section id="sobre" className="surface-light relative py-20 lg:py-28">
+      <WaveDivider className="text-section" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-2">
           <div>
@@ -40,7 +42,7 @@ export function About() {
             </Reveal>
 
             <Reveal delay={0.15} className="mt-10">
-              <div className="flex items-center gap-5 rounded-xl border border-border bg-card p-7">
+              <div className="tech-card group flex items-center gap-5 p-7">
                 <span className="text-primary">
                   <PowerMark className="h-12 w-12" />
                 </span>
@@ -67,7 +69,7 @@ export function About() {
 
         <ul className="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {DIFFS.map((d, i) => (
-            <Reveal as="li" key={d.num} delay={i * 0.08} className="rounded-lg border border-border bg-card p-6">
+            <Reveal as="li" key={d.num} delay={i * 0.08} className="tech-card group p-6">
               <p className="font-display text-xs font-bold tracking-[0.2em] text-primary">{d.num}</p>
               <h3 className="mt-4 text-sm font-bold tracking-[0.08em] uppercase">{d.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{d.desc}</p>

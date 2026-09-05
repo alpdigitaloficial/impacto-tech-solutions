@@ -82,6 +82,10 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
             <stop offset="0%" stopColor="var(--glow)" stopOpacity="0.22" />
             <stop offset="100%" stopColor="var(--glow)" stopOpacity="0" />
           </radialGradient>
+          <filter id="node-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
 
         <circle cx={center.x} cy={center.y} r="170" fill="url(#imp-glow)" />
@@ -93,6 +97,7 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
           stroke="currentColor"
           strokeOpacity="0.12"
           strokeDasharray="3 7"
+          className="anim-orbit"
         />
 
         {/* conexões */}
@@ -120,7 +125,7 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
         {nodes.map((n, i) => (
           <g
             key={n.label}
-            className="anim-float"
+            className="group anim-float cursor-default"
             style={{ animationDelay: `${i * 0.8}s`, transformOrigin: `${n.x}px ${n.y}px` }}
           >
             <circle
@@ -130,6 +135,7 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
               fill="var(--card)"
               stroke="currentColor"
               strokeOpacity="0.16"
+              className="transition-all duration-300 group-hover:stroke-primary group-hover:[filter:url(#node-glow)]"
             />
             <g
               transform={`translate(${n.x} ${n.y})`}
@@ -138,6 +144,7 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
               strokeWidth="1.6"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="transition-all duration-300 group-hover:stroke-primary group-hover:[filter:url(#node-glow)]"
             >
               {n.icon}
             </g>
