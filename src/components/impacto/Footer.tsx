@@ -65,9 +65,20 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <p className="mx-auto max-w-7xl px-4 py-6 text-xs text-muted-foreground sm:px-6 lg:px-8">
-          © 2026 Impacto Informática. Todos os direitos reservados.
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
+          <p>© 2026 Impacto Informática. Todos os direitos reservados.</p>
+          <p>
+            Desenvolvido por:{" "}
+            <a
+              href="https://alpdigital.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground transition-colors hover:text-primary"
+            >
+              ALP Digital
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

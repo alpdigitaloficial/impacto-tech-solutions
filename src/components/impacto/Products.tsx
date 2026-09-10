@@ -106,11 +106,13 @@ export function Products() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="eyebrow text-primary">{product.category}</p>
-                  <h4 className="mt-2 text-xl font-bold">{product.name}</h4>
-                   {product.description && (
-                     <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
-                   )}
+                  <div className="flex-1">
+                    <p className="eyebrow text-primary">{product.category}</p>
+                    <h4 className="mt-2 text-xl font-bold">{product.name}</h4>
+                    {product.description && (
+                      <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
+                    )}
+                  </div>
                   <Button asChild size="lg" className="mt-6 w-full font-semibold">
                     <a
                       href={wa(`Olá, tenho interesse no ${product.name}.`)}
