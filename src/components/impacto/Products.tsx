@@ -3,9 +3,10 @@ import { Reveal, SectionHeading } from "./Reveal";
 import { wa } from "@/lib/impacto";
 import { WaveDivider } from "./WaveDivider";
 import { Button } from "@/components/ui/button";
-import mouseImage from "@/assets/product-mouse.jpg";
+import peripheralsImage from "@/assets/product-peripherals.jpg";
 import routerImage from "@/assets/product-router.jpg";
-import cableImage from "@/assets/product-cable.jpg";
+import inkRefillImage from "@/assets/product-ink-refill.jpg";
+import cpuImage from "@/assets/product-cpu.jpg";
 
 const CATEGORIES = [
   { icon: Monitor, title: "Computadores" },
@@ -20,22 +21,29 @@ const BRANDS = ["Intelbras", "Logitech", "Epson", "Entre outras"];
 
 const PRODUCTS = [
   {
-    name: "Mouse sem fio",
-    category: "Periféricos",
-    image: mouseImage,
-    alt: "Mouse sem fio preto com detalhes em azul",
+    name: "Periféricos e Acessórios",
+    category: "Periféricos e acessórios",
+    image: peripheralsImage,
+    alt: "Composição profissional com teclado, mouse, hub USB e cabos",
   },
   {
-    name: "Roteador Wi-Fi",
+    name: "Equipamentos de Rede",
     category: "Equipamentos de rede",
+    description: "Roteador Wi-Fi e Acessórios",
     image: routerImage,
     alt: "Roteador Wi-Fi preto com antenas e indicadores azuis",
   },
   {
-    name: "Cabo USB-C reforçado",
-    category: "Acessórios",
-    image: cableImage,
-    alt: "Cabo USB-C trançado preto com detalhes em azul",
+    name: "Refil de Tinta Epson",
+    category: "Suprimentos",
+    image: inkRefillImage,
+    alt: "Frascos de refil de tinta colorida diante de uma impressora",
+  },
+  {
+    name: "CPU",
+    category: "Computadores",
+    image: cpuImage,
+    alt: "Gabinete de computador preto em fundo azul-marinho",
   },
 ];
 
@@ -84,7 +92,7 @@ export function Products() {
             </div>
           </Reveal>
 
-          <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {PRODUCTS.map((product, i) => (
               <Reveal as="li" key={product.name} delay={i * 0.08} className="tech-card group flex min-h-full flex-col">
                 <div className="aspect-[4/3] overflow-hidden border-b border-border bg-background">
@@ -100,6 +108,9 @@ export function Products() {
                 <div className="flex flex-1 flex-col p-6">
                   <p className="eyebrow text-primary">{product.category}</p>
                   <h4 className="mt-2 text-xl font-bold">{product.name}</h4>
+                   {product.description && (
+                     <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
+                   )}
                   <Button asChild size="lg" className="mt-6 w-full font-semibold">
                     <a
                       href={wa(`Olá, tenho interesse no ${product.name}.`)}
