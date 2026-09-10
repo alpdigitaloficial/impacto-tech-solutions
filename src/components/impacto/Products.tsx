@@ -5,8 +5,8 @@ import { WaveDivider } from "./WaveDivider";
 import { Button } from "@/components/ui/button";
 import peripheralsImage from "@/assets/product-peripherals.jpg";
 import routerImage from "@/assets/product-router.jpg";
-import inkRefillImage from "@/assets/product-ink-refill.jpg";
-import cpuImage from "@/assets/product-cpu.jpg";
+import inkRefillImage from "@/assets/product-ink-refill-upload.jpg";
+import cpuImage from "@/assets/product-cpu-upload.jpg";
 
 const CATEGORIES = [
   { icon: Monitor, title: "Computadores" },
